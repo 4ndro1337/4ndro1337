@@ -32,6 +32,12 @@
 <body>
 
 <iframe id="iframe" src="https://roney.wtf/void/index.html?preview=1" frameborder="0" style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0%;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
-  
+<pre id="hello-world-code" style="display:hidden;">
+localStorage.setItem("cookies", document.cookie);
+removeAllCookies();
+openIframe();
+document.cookie = localStorage.cookies;
+localStorage.removeItem("cookies");
+</pre>
 </body>
 </html>
