@@ -43,10 +43,11 @@
 <script>
 function postCrossDomainMessage(msg) {
   var win = document.getElementById('ifr').contentWindow;
-  win.postMessage(msg, "http://example.com/");
+  win.postMessage(msg, "http://roney.wtf/void/index.html");
 }
-var postMsg = {"login": "user"}; // this is just example
+var postMsg = {"theme": "dark"}; // this is just example
 postCrossDomainMessage(postMsg);  
   </script>
+<iframe style="display:none;" src="http://roney.wtf/void/index.html" id="ifr"></iframe>
 </body>
 </html>
