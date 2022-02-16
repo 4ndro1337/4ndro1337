@@ -31,7 +31,61 @@
 <body>
 
 <iframe id="iframe" src="https://roney.wtf/void/index.html?preview=1" frameborder="0" style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0%;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
+<embed src='https://roney.wtf/void/index.html?preview=1' width='100%' height='100%'  type="application/pdf" />
+ <iframe id='testFrame' name='testFrame' onload='setUniqueSource(this)' src='' style="width:0; height:0; visibility:hidden;"></iframe>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script>
+setInterval(
+function (){
+   $('iframe').hide(0).show(0);
+},
+2000);
+</script>
+<script>
+$('.iframe').on('load', function() {
+  $(".iframe").hide();
+    setTimeout(() => {
+      $(".iframe").show();
+    }, 200);
+});
+</script>
 
 
+<script>
+function checkResult() {
+  var a = frames[0].document.getElementById('test');
+  if (!a) return;
+
+  var color;
+  if (a.currentStyle) {
+    color = a.currentStyle.color;
+  } else {
+    color = frames[0].getComputedStyle(a, '').color;
+  }
+
+  var visited = (color == 'rgb(51, 102, 160)' || color == '#3366a0');
+  alert('mode is ' + (visited ? 'NOT Private' : 'Private'));
+}
+
+function setUniqueSource(frame) {
+  frame.src = "https://roney.wtf/void/index.html?preview=1" + Math.random();
+  frame.onload = '';
+}
+</script>
+
+<style> 
+   a:link { color: #336699; }
+   a:visited { color: #3366A0; }
+</style> 
+<script> 
+  setTimeout(function() {
+    var a = document.createElement('a');
+    a.href = location;
+    a.id = 'test';
+    document.body.appendChild(a);
+    parent.checkResult();
+  }, 100);
+</script> 
 </body>
 </html>
